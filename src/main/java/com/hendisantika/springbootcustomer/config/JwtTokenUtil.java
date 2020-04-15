@@ -1,5 +1,6 @@
 package com.hendisantika.springbootcustomer.config;
 
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -19,4 +20,9 @@ public class JwtTokenUtil {
 
     @Value("${jwt.secret}")
     private String secret;
+
+    //retrieve username from jwt token
+    public String getUsernameFromToken(String token) {
+        return getClaimFromToken(token, Claims::getSubject);
+    }
 }
