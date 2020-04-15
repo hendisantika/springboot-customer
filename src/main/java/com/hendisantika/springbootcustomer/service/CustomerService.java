@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,5 +34,20 @@ public class CustomerService {
         customers.forEach(customer -> System.out.println(customer.getName()));
 
         return customers;
+    }
+
+    public Optional<Customer> findCustomerById(Integer id) {
+
+        return customerRepository.findById(id);
+    }
+
+    public Customer update(Customer customer, Integer id) {
+
+        return customerRepository.save(customer);
+    }
+
+    public void deleteById(Integer id) {
+
+        customerRepository.deleteById(id);
     }
 }
