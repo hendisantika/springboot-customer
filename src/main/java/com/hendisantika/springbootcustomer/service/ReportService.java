@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ResourceUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +61,14 @@ public class ReportService {
 /*        byte[] bytes = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
 		res.getOutputStream().write(contentOf(file));*/
         //return bytes;
+    }
 
+    public void downloadFile(String fileName, HttpServletResponse res) throws Exception {
+        res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+        res.getOutputStream().write(contentOf(fileName));
+    }
+
+    private byte[] contentOf(String fileName) throws Exception {
+        return Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(fileName).toURI()));
     }
 }
