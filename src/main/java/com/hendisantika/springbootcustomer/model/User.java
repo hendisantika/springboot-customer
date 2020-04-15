@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,39 +17,26 @@ import java.time.LocalDateTime;
  * Email: hendisantika@gmail.com
  * Telegram : @hendisantika34
  * Date: 16/04/20
- * Time: 05.56
+ * Time: 05.59
  */
 @Entity
-@Table
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    @Column
-    private String name;
+    private String firstname;
 
-    @Column
-    private String email;
+    private String lastname;
 
-    @Column
-    private String commodity;
+    private String username;
 
-    @Column
-    private Integer weight;
+    private String password;
 
-    @Column
-    private String weightdesc;
+    private String role;
 
-    @Column
-    private Integer rupees;
-
-    @Column
-    private long mobile;
-
-    @Column
-    private LocalDateTime purchaseDate;
 }
