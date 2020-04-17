@@ -1,7 +1,10 @@
 package com.hendisantika.springbootcustomer.controller;
 
+import com.hendisantika.springbootcustomer.model.Customer;
 import com.hendisantika.springbootcustomer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +25,9 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    //To insert the customer data into database
+    @PostMapping(value = "/insert")
+    public void createCustomer(@RequestBody Customer customer) {
+        customerService.create(customer);
+    }
 }
