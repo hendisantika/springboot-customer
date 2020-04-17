@@ -5,6 +5,7 @@ import com.hendisantika.springbootcustomer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +39,11 @@ public class CustomerController {
     @GetMapping(produces = "application/json", value = "/getUsers")
     public List<Customer> getCustomer() {
         return customerService.getCustomer();
+    }
+
+    //update customer
+    @PutMapping(value = "/updateUser")
+    public Customer updateCustomer(@RequestBody Customer customer) {
+        return customerService.update(customer, customer.getId());
     }
 }
