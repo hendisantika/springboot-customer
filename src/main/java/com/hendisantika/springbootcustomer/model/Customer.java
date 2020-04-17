@@ -47,7 +47,7 @@ public class Customer {
     private String weightdesc;
 
     @Column
-    private Integer rupees;
+    private Integer idr;
 
     @Column
     private long mobile;
